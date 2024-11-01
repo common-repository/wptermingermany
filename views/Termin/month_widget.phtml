@@ -1,0 +1,58 @@
+<?php
+
+	/**
+	 * Template für die Monats Widget Ansicht
+	 */
+
+?>
+<?php if ($this->view['widget_head'] === true) { ?>
+<?php echo $this->view['args']['before_widget']; ?>
+<div class="wptg_month_widget">
+<?php } ?>
+
+<div class="wptg_head">
+	<div class="wptg_prev"><a href="#" onclick="return wptg_switchCalendarPrev(this);">&lt;</a></div>
+	<div class="wptg_monthname" id="wptg:<?php echo wptg_hspc($this->view['widget_key']); ?>:<?php echo wptg_hspc($this->view['year']); ?>:<?php echo wptg_hspc($this->view['month']); ?>" >
+		<a href="<?php echo $this->getMonthURL($this->view['time_month'], $this->view['categories']); ?>"><?php echo wptg_hspc($this->view['monthname']); ?></a>
+	</div>
+	<div class="wptg_next"><a href="#" onclick="return wptg_switchCalendarNext(this);">&gt;</a></div>
+</div>
+<table>
+	<thead>
+		<tr>
+			<th><?php echo __('Mo', 'wptg'); ?></th>
+			<th><?php echo __('Di', 'wptg'); ?></th>
+			<th><?php echo __('Mi', 'wptg'); ?></th>
+			<th><?php echo __('Do', 'wptg'); ?></th>
+			<th><?php echo __('Fr', 'wptg'); ?></th>
+			<th><?php echo __('Sa', 'wptg'); ?></th>
+			<th><?php echo __('So', 'wptg'); ?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ((array)$this->view['table_body'] as $row) { ?>
+		<tr>
+			<?php for ($w = 0; $w <= 6; $w++) { ?>
+				<?php if (isset($row[$w])) { ?>
+					<td class="<?php echo wptg_hspc($row[$w]['class']); ?>">
+						<?php if (wptg_isSizedArray($row[$w]['arTermine'])) { ?>							
+						<a href="<?php echo $this->getEventUrl($row[$w]['day'], $this->view['categories']); ?>">
+							<?php echo wptg_hspc($row[$w]['dayLabel']); ?>
+						</a>
+						<?php } else { ?>
+						<?php echo wptg_hspc($row[$w]['dayLabel']); ?>
+						<?php } ?>
+					</td>
+				<?php } else { ?>
+					<td class="blank">&nbsp;</td>
+				<?php } ?>
+			<?php } ?>
+		</tr>
+		<?php } ?>
+	</tbody>
+</table>
+
+<?php if ($this->view['widget_head'] === true) { ?>
+</div>
+<?php echo $this->view['args']['after_widget']; ?>
+<?php } ?>

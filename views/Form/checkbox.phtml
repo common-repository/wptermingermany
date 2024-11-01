@@ -1,0 +1,15 @@
+<?php 
+
+	/**
+	 * Template für eine Checkbox
+	 */
+
+?>
+<div class="wptg_formfield wptg_formfield_checkbox">
+	<div class="wptg_label"><label for="<?php echo wptg_hspc($this->view['id']); ?>"><?php echo $this->view['label']; ?>:</label></div>
+	<div class="wptg_value">
+		<input type="hidden" name="<?php echo wptg_hspc($this->view['name']); ?>" />
+		<input type="checkbox" value="1" id="<?php echo wptg_hspc($this->view['id']); ?>" name="<?php echo wptg_hspc($this->view['name']); ?>" <?php echo (($this->view['value'] == '1')?'checked="checked"':''); ?> /> 
+	</div>
+	<div class="wptg_clearer"></div>
+</div>

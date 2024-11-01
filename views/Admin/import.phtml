@@ -1,0 +1,47 @@
+<div class="wptg_admin_import">
+	<form method="post" action="<?php echo wptg_hspc(WPTG_URL_WP.'wp-admin/admin.php?page=wptg-configuration&a=import&noheader=1'); ?>" enctype="multipart/form-data">
+	
+		<h2><?php echo __('Neuer iCalender Import', 'wptg'); ?></h2>
+	
+		<input type="file" name="file" />
+		
+		<br /><br />
+		<input type="submit" name="submit" value="<?php echo __('Import starten', 'wptg'); ?>" class="button-primary" />
+	
+		<br /><br />
+		
+		<h2><?php echo __('Vergangene iCalender Importe', 'wptg'); ?></h2>
+		
+		<?php if (wptg_isSizedArray($this->view['arImport'])) { ?>
+		
+		<table>
+			<tr>
+				<th class="col_id"><?php echo __('Id', 'wptg'); ?></th>
+				<th class="col_date"><?php echo __('Importiert am', 'wptg'); ?></th>
+				<th class="col_filename"><?php echo __('Dateiname', 'wptg'); ?></th>
+				<th class="col_eventcount"><?php echo __('Termine', 'wptg'); ?></th>
+				<th class="col_action"></th>		
+			</tr>
+			<?php foreach ($this->view['arImport'] as $import) { ?>
+			<tr>
+				<td class="col_id"><?php echo wptg_hspc($import['id']); ?></td>
+				<td class="col_date"><?php echo date('d.m.Y H:i:s', strtotime($import['cdate'])); ?></td>
+				<td class="col_filename"><?php echo wptg_hspc($import['filename']); ?></td>
+				<td class="col_eventcount"><?php echo wptg_hspc($import['posts'].' / '.$import['event_count']); ?></td>
+				<td class="col_action">
+					<a href="<?php echo wptg_hspc(WPTG_URL_WP.'wp-admin/admin.php?page=wptg-configuration&a=import&do=restore&import_id='.$import['id'].'&noheader=1'); ?>" title="<?php echo __('Import rückgängig machen', 'wptg'); ?>"><img src="<?php echo $this->getRessourceURL('gfx/arrow_undo.png'); ?>" alt="<?php echo __('Import rückgängig machen', 'wptg'); ?>" /></a>
+				</td>
+			</tr>
+			<?php } ?>
+		</table>	
+		
+		<br />
+		
+		<input type="button" class="button" onclick="if (!confirm('<?php echo __('Die importierten Termine werden nicht gelöscht. Sind sie sich sicher, dass sie die Importhistory löschen möchten?', 'wptg'); ?>')) return false; location.href = '<?php echo wptg_hspc(WPTG_URL_WP.'wp-admin/admin.php?page=wptg-configuration&a=import&do=clearHistory&noheader=1'); ?>';" value="<?php echo __('Importhistory löschen', 'wptg'); ?>" />
+		
+		<?php } else { ?>
+		<p><?php echo __('Bisher noch keine Importe durchgeführt.', 'wptg'); ?>
+		<?php } ?>
+		
+	</form>
+</div>

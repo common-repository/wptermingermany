@@ -1,0 +1,32 @@
+<?php
+
+	/**
+	 * Template für die Tagesansicht
+	 */
+
+?>
+<div class="event_calendarview">
+ 
+	<div id="wptg_calendar"></div>
+	
+</div>
+
+<script type="text/javascript">/* <![CDATA[ */
+
+	jQuery(document).ready(function() {
+
+		jQuery('#wptg_calendar').fullCalendar( jQuery.extend( {
+			header: {
+				right: 'agendaDay,basicWeek,month today prev,next'
+			},			
+			year: <?php echo $this->view['year']; ?>,
+			month: <?php echo $this->view['month']; ?>,
+			date: <?php echo $this->view['date']; ?>, 
+			defaultView: '<?php echo $this->view['mode']; ?>',
+			editable: true,
+			events: '<?php echo $this->view['eventUrl']; ?>'	
+	    }, wptg_fullcalendar_localOptions));		
+		
+	} );
+                                            
+/* ]]> */</script>

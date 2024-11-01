@@ -1,0 +1,33 @@
+<?php
+
+	/**
+	 * Template für die Konfigurationsseite im Backend
+	 */
+
+?>
+<br />
+<div class="wptg_admin_index">
+ 
+	<?php echo $this->writeBackendMessage(); ?>
+
+	<div class="left">
+		
+		<ul>
+			<li class="<?php echo (($this->view['a'] == 'general')?'akt':''); ?>"><a href="<?php echo wptg_hspc(WPTG_URL_WP.'wp-admin/admin.php?page=wptg-configuration&a=general'); ?>"><?php echo __('Allgemein', 'wptg'); ?></a></li>
+			<li class="<?php echo (($this->view['a'] == 'calendarview')?'akt':''); ?>"><a href="<?php echo wptg_hspc(WPTG_URL_WP.'wp-admin/admin.php?page=wptg-configuration&a=calendarview'); ?>"><?php echo __('Kalenderansicht', 'wptg'); ?></a></li>
+			<li class="<?php echo (($this->view['a'] == 'import')?'akt':''); ?>"><a href="<?php echo wptg_hspc(WPTG_URL_WP.'wp-admin/admin.php?page=wptg-configuration&a=import'); ?>"><?php echo __('Import', 'wptg'); ?></a></li>
+		</ul>
+		
+	</div>
+
+	<div class="right">
+	
+		<div class="inner">
+					
+			<?php echo $this->view['subContent']; ?>
+			
+		</div>
+		
+	</div>
+	
+</div>

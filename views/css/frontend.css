@@ -1,0 +1,15 @@
+ .wptg_event { background-color:red; }
+ .event_calendarview table.fc-header td { border:0px; }
+ .event_calendarview table.fc-agenda-slots { border-bottom:0px; }
+ 
+ /* Widget */
+ .wptg_month_widget table { clear:both; }
+ .wptg_month_widget table tr th, .wptg_month_widget table tr td { text-align:center; }
+ .wptg_month_widget table tr th { font-weight:bold; }
+ .wptg_month_widget .wptg_head { height:2rem; line-height:2rem; }
+ .wptg_month_widget .wptg_head .wptg_prev { width:20%; float:left; width:10%; text-align:center; } 
+ .wptg_month_widget .wptg_head .wptg_monthname { width:80%; float:left; text-align:center; }
+ .wptg_month_widget .wptg_head .wptg_next { float:left; width:10%; text-align:center; } 
+ 
+ /* Kalenderansicht */
+.fc-header-title h2 { font-size:1rem; }

@@ -1,0 +1,35 @@
+<?php
+
+	/**
+	 * Template für die META Box im Termin Post Type
+	 */
+
+?>
+<div class="wptg_metabox">
+	<?php echo wptg_drawFormDatepicker('wptg[from]', __('Von', 'wptg'), $this->view['values']['from'], array('timepicker' => '1')); ?>
+	<?php echo wptg_drawFormDatepicker('wptg[to]', __('Bis', 'wptg'), $this->view['values']['to'], array('timepicker' => '1')); ?>
+	<?php echo wptg_drawFormCheckbox('wptg[fullday]', __('Ganztags', 'wptg'), $this->view['values']['fullday'], array()); ?>
+</div>
+
+<script type="text/javascript">/* <![CDATA[ */
+
+	jQuery('#wptgfullday').bind('change', function() {
+
+		if (jQuery(this).prop('checked'))
+		{
+
+			jQuery('.wptgfrom .wptg_timepicker').hide();
+			jQuery('.wptgto .wptg_timepicker').hide();
+			
+		}
+		else
+		{
+
+			jQuery('.wptgfrom .wptg_timepicker').show();
+			jQuery('.wptgto .wptg_timepicker').show();
+			
+		}			
+		
+	} ).change();
+
+/* ]]> */</script>

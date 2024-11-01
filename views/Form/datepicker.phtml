@@ -1,0 +1,38 @@
+<?php 
+
+	/**
+	 * Template für die Datepicker Integration ins Backend
+	 */
+
+?>
+<div class="wptg_formfield wptg_formfield_datepicker <?php echo wptg_hspc($this->view['id']); ?> <?php echo (($this->view['timepicker'] === true)?'wptg_formfield_timepicker':''); ?>">
+	<div class="wptg_label"><?php echo $this->view['label']; ?>:</div>
+	<div class="wptg_value">
+		<input class="wptg_datepicker" placeholder="<?php echo wptg_hspc($this->view['placeholder']); ?>" value="<?php echo wptg_hspc($this->view['value_date']); ?>" id="<?php echo wptg_hspc($this->view['id']); ?>" name="<?php echo wptg_hspc($this->view['name']); ?>" />
+		
+		<?php if ($this->view['timepicker'] === true) { ?>
+		<div class="wptg_timepicker">
+			<div class="wptg_spacer">@</div>
+			<div class="wptg_time">
+				<input type="text" class="wptg_timepicker" value="<?php echo wptg_hspc($this->view['value_time_minute']); ?>" id="<?php echo wptg_hspc($this->view['id']); ?>-minute" name="<?php echo wptg_hspc($this->view['name_minute']); ?>" />
+				<div class="wptg_spacer">:</div>
+				<input type="text" class="wptg_timepicker" value="<?php echo wptg_hspc($this->view['value_time_hour']); ?>" id="<?php echo wptg_hspc($this->view['id']); ?>-hour" name="<?php echo wptg_hspc($this->view['name_hour']); ?>" />				
+			</div>
+		</div>
+		<?php } ?>
+		
+	</div>
+	<div class="wptg_clearer"></div>
+</div>
+
+<script type="text/javascript">/* <![CDATA[ */
+
+	jQuery(document).ready(function() {
+		
+    	jQuery('#<?php echo wptg_hspc($this->view['id']); ?>').datepicker( {
+        	dateFormat : '<?php echo wptg_hspc($this->view['dateFormat']); ?>'
+    	} );
+    	
+	} );
+
+/* ]]> */</script>

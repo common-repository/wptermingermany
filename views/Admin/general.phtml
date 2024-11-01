@@ -1,0 +1,8 @@
+<form method="post" action="<?php echo wptg_hspc(WPTG_URL_WP.'wp-admin/admin.php?page=wptg-configuration&noheader=1'); ?>">
+
+	<?php echo wptg_drawFormSelect('wptg_datePage', __('Kalenderansicht', 'wptg'), $this->get_option('wptg_datePage'), $this->view['arPages']); ?>
+	
+	<br />
+	<input class="button-primary" name="submit" type="submit" value="<?php echo __('Speichern', 'wptg'); ?>" />
+	
+</form>
